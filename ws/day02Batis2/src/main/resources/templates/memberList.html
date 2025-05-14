@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h2>
+
+  </h2>
+
+  <div th:each="member:${list}">
+    <span th:text="${member.id}"></span>
+
+    <span th:text="${member.pw}">비~~~밀번호 안보이지요</span>
+
+    <span th:text="${member.name}">이름이세요</span>
+
+
+
+  </div>
+</body>
+</html>
