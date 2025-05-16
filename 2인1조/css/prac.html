@@ -1,32 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            margin: 0 auto;
-        }
-        .bangWrap{
-            width: 700px;
-            height: 500px;
-            border: 1px solid black;
-        }
-        
-    </style>
+  <meta charset="UTF-8">
+  <title>댓글 스타일</title>
+  <style>
+    body {
+      font-family: '굴림', sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    .post-container {
+      width: 400px;
+      margin: 30px auto;
+      border: 5px double #ccc;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 5px 5px 10px #ddd;
+      position: relative;
+    }
+
+    .post-header {
+      font-weight: bold;
+      font-size: 18px;
+      margin: 10px 0px;
+    }
+
+    .post-divider {
+      border-top: 1px dashed #bbb;
+      margin: 25px 0;
+    }
+
+
+    .label {
+      display: inline-block;
+      width: 70px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    input, textarea {
+      width: calc(100% - 10px);
+      margin-bottom: 10px;
+      padding: 5px;
+      font-size: 12px;
+      border: 1px solid #aaa;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 80px;
+    }
+
+    .lock-icon {
+      margin-left: 5px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .submit-btn {
+      display: block;
+      margin: 0 auto;
+      background-color: #ddd;
+      padding: 5px 20px;
+      border: 1px solid #999;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #ccc;
+    }
+
+    .corner-tape {
+      width: 40px;
+      height: 20px;
+      background-color: #ccc;
+      position: absolute;
+    }
+
+    .corner-tape.top-left {
+      top: -10px;
+      left: -10px;
+      transform: rotate(-20deg);
+    }
+
+    .corner-tape.bottom-right {
+      bottom: -10px;
+      right: -10px;
+      transform: rotate(20deg);
+    }
+  </style>
 </head>
 <body>
-    
-    <h2>방명록 등록을 해봐요</h2>
-    <div class="bangWrap">
-        <form th:action="@{/formProc}" method="post" >
-            <p>작성자 : <input type="text" name="writer"></p>
-            <p>제목 : <input type="text" name="title"></p>
-            <p>내용 : <input type="text" name="content"></p>
-            <p>비밀번호 : <input type="password" name="board_pw"></p>
-            <button>등록</button>
-        </form>
-    </div>
+
+<div class="post-container">
+  <div class="corner-tape top-left"></div>
+  <div class="corner-tape bottom-right"></div>
+
+    <div class="post-header">
+    방명록 작성 🔒 <span class="lock-icon">(현재 시간을 넣어)</span>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <div>
+    <label class="label">작성자</label>
+    <input type="text" placeholder="이름을 입력하세요">
+  </div>
+
+
+  <div>
+    <label class="label">제목</label>
+    <input type="text" placeholder="제목을 입력하세요">
+  </div>
+
+  <div>
+    <label class="label">내용</label>
+    <textarea placeholder="내용을 입력하세요"></textarea>
+  </div>
+
+  <div>
+    <label class="label">비밀번호</label>
+    <input type="password" placeholder="비밀번호 입력">
+  </div>
+
+  <button class="submit-btn">등록</button>
+</div>
+
 </body>
 </html>
