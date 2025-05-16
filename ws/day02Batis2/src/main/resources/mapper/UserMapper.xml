@@ -21,7 +21,7 @@
         select   *  from  acorntbl
     </select>
 
-    <select id="selectAll3" resultMap="Member2">
+    <select id="selectAll3" resultType="Member2">
         select   *  from  acorntbl
     </select>
 

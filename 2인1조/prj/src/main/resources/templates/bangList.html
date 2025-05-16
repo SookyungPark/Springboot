@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h2>
+
+  </h2>
+
+  <div th:each="bang:${list}">
+    <span th:text="${bang.writer}">test2 작성자</span>
+
+    <span th:text="${bang.title}">testtitle1 제목</span>
+
+    <span th:text="${bang.content}">testcontents1 내용</span>
+    <span th:text="${bang.board_pw}">5555 비밀번호</span>
+
+
+
+  </div>
+</body>
+</html>
