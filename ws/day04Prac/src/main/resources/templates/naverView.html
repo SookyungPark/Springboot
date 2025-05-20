@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    table{
+    border:1px solid black;
+    }
+    tr{
+
+    }
+    td{
+    border:1px solid black;
+    }
+
+    img{
+    width:100px;
+    height:100px;
+    }
+  </style>
+
+</head>
+<body>
+<table>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+
+  <!--모델 데이터 반복구간-->
+  <tr th:each="item : ${list}">
+    <td th:utext="${item.title}"></td>
+    <td th:text="${item.lprice}"></td>
+    <td><img th:src="${item.image}"></td>
+    <td><a th:href="${item.link}">상품링크</a></td>
+  </tr>
+
+</table>
+
+</body>
+</html>

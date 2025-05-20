@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>홈</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+    }
+
+    .wrap {
+        display: flex;
+        max-width: 1100px;
+        margin: 40px auto;
+        gap: 30px;
+    }
+
+    .side_wrap {
+        width: 350px;
+        background: linear-gradient(135deg, #a2d2ff, #caffbf);
+        border-radius: 15px;
+        padding: 30px 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .img_wrap {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+
+    .user_title h3 {
+        margin: 0;
+        padding: 10px;
+        font-size: 22px;
+        color: #333;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    .side_wrap2 {
+        flex: 1;
+        background-color: #fff8f0;
+        border-radius: 15px;
+        padding: 30px;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .side_wrap2 h3 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #444;
+    }
+
+    .board_wrap,
+    .board_wrap_img {
+        width: 100%;
+        height: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+    }
+
+    .board_wrap_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .side_title {
+        position: absolute;
+        top: 30px;
+        right: -120px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stitle {
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #ffe082;
+        text-align: center;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+
+    .stitle:hover {
+        background-color: #ffd54f;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .wrap {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .side_title {
+            position: static;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    }
+
+    .board_wrap table {
+width: 100%;
+border-collapse: collapse;
+font-size: 16px;
+color: #333;
+}
+
+.board_wrap thead {
+background-color: #ffe082;
+color: #444;
+font-weight: bold;
+}
+
+.board_wrap thead th {
+padding: 12px 15px;
+border-bottom: 2px solid #ddd;
+text-align: left;
+}
+
+.board_wrap tbody tr {
+border-bottom: 1px solid #ddd;
+transition: background-color 0.3s ease;
+cursor: default;
+}
+
+.board_wrap tbody tr:hover {
+background-color: #fff2cc;
+}
+
+.board_wrap tbody td {
+padding: 12px 15px;
+}
+
+.board_wrap tbody tr:nth-child(even) {
+background-color: #f9f9f9;
+}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="side_wrap">
+    <div class="img_wrap">
+      <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTAxMTJfMTQ5/MDAxNjEwMzc4MzEyMzY3.dQpVE8zVGu-u2bXOyE9MWQGAGZnRI-SWg71_RVTglEcg.iMJONzM7rf1kKnwMn05TJJz1y18mU5NUHM35p5TkBfEg.JPEG.a3818594/82673251908589c483c4dae4aef911a799eedb6d.jpg?type=w800">
+    </div>
+
+    <div class="user_title" th:if="${nickname}">
+      <h3>안녕하세요, <span th:text="${nickname}">닉네임</span>님!</h3>
+    </div>
+  </div>
+
+  <div class="side_wrap2">
+    <h3>방명록</h3>
+    <div class="board_wrap">
+      <table>
+        <thead>
+        <tr>
+          <th>글번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${list}">
+          <td th:text="${board.boardNo}">글번호</td>
+          <td th:text="${board.title}">제목</td>
+          <td th:text="${board.writer}">작성자</td>
+          <td th:text="${#temporals.format(board.creatAt, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="board_wrap_img">
+      <img src="https://t1.daumcdn.net/cfile/tistory/990D3F4B5BBEF5CB02" alt="방명록 이미지">
+    </div>
+
+    <div class="side_title">
+      <p class="stitle">홈</p>
+      <p class="stitle">프로필</p>
+      <p class="stitle">다이어리</p>
+      <p class="stitle">사진첩</p>
+      <p class="stitle"><a th:href="@{/bang}"> 게시판</a></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

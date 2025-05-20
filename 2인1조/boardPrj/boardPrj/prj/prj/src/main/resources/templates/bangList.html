@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>방명록 목록</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+          box-sizing: border-box;
+          font-family: 'Noto Sans', sans-serif;
+        }
+
+        body {
+          background-color: #f0f2f5;
+          margin: 0;
+          padding: 40px 20px;
+        }
+
+        h2 {
+          text-align: center;
+          color: #333;
+          font-size: 28px;
+          margin-bottom: 40px;
+        }
+
+        .header-wrap {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 900px;
+          margin: 0 auto 30px auto;
+          padding: 0 10px;
+        }
+
+        .write-button {
+          font-size: 14px;
+          background-color: #ffe082;
+          color: #333;
+          padding: 8px 16px;
+          border: none;
+          border-radius: 10px;
+          text-decoration: none;
+          font-weight: bold;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          transition: background-color 0.3s ease;
+        }
+
+        .write-button:hover {
+          background-color: #ffd54f;
+        }
+
+        .post-container {
+          width: 100%;
+          max-width: 800px;
+          margin: 20px auto;
+          padding: 25px;
+          background-color: #ffffff;
+          border-radius: 15px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          position: relative;
+          transition: transform 0.2s;
+        }
+
+        .post-container:hover {
+          transform: translateY(-4px);
+        }
+
+        .post-number {
+          font-weight: bold;
+          font-size: 18px;
+          margin-bottom: 15px;
+          color: #444;
+        }
+
+        .post-container span {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 16px;
+          color: #555;
+        }
+
+        .corner-tape {
+          width: 40px;
+          height: 20px;
+          background-color: #cfd8dc;
+          position: absolute;
+          z-index: 1;
+        }
+
+        .corner-tape.top-left {
+          top: -10px;
+          left: -10px;
+          transform: rotate(-20deg);
+        }
+
+        .corner-tape.bottom-right {
+          bottom: -10px;
+          right: -10px;
+          transform: rotate(20deg);
+        }
+
+        @media screen and (max-width: 600px) {
+          .header-wrap {
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          .post-container {
+            padding: 20px;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-wrap">
+    <h2><a th:href="@{/main}"> 📜 방명록 목록</a></h2>
+    <a href="/formView" class="write-button">✏️ 방명록 작성</a>
+</div>
+
+<div th:each="bang : ${list}" class="post-container">
+    <div class="corner-tape top-left"></div>
+    <div class="corner-tape bottom-right"></div>
+
+    <div class="post-number" th:text="'No. ' + ${bang.boardNo} + ' 🔒'">No. 1 🔒</div>
+
+    <span th:text="'작성자: ' + ${bang.writer}">작성자: 홍길동</span>
+    <span th:text="'제목: ' + ${bang.title}">제목: 반가워요</span>
+    <span th:text="'내용: ' + ${bang.content}">내용: 잘 보고 갑니다~</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.prj.login.UserMapper">
+
+    <select id="findById" parameterType="String" resultType="com.example.prj.login.User">
+        SELECT user_id AS userId, user_pw AS userPw, name
+        FROM board_user_tbl
+        WHERE user_id = #{userid}
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.prj.login.User">
+        INSERT INTO board_user_tbl (user_id, user_pw, name)
+        VALUES (#{userid}, #{userpw}, #{name})
+    </insert>
+
+</mapper>

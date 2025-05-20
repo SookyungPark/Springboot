@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="a">
+
+    <select id="selectAll" resultType="Bang">
+        SELECT * FROM board_tbl
+    </select>
+
+    <select id="selectByWriter" parameterType="String" resultType="Bang">
+        SELECT * FROM board_tbl WHERE writer = #{writer}
+    </select>
+
+    <!--parameterType : SQL에 넣을 입력값의 설계도-->
+    <insert id="insert"  parameterType="Bang" >
+    insert into board_tbl(writer, title, content, board_pw) values(#{writer}, #{title},#{content},#{boardPw})
+    </insert>
+</mapper>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>지도 생성하기</title>
+
+</head>
+<body>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:600px;height:600px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d78d5936ff8bff300ddc50b75c4ca7d"></script>
+<script>
+  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+      mapOption = {
+          center: new kakao.maps.LatLng(37.554136, 126.920619), // 지도의 중심좌표
+          level: 3 // 지도의 확대 레벨
+      };
+
+  // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+  var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+</body>
+</html>
