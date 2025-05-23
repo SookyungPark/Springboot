@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<!--null 처리하는 애들-->
+<h2>앨비스 연산자   ?:  , null 처리   </h2>
+<div th:text="${data}   ?: '데이터없다요!!!!!!!!'     ">데이터가 나오는 자리</div>
+<div th:text="${data2}   ?: '데이터없어요!!!!!!!!'     ">데이터가 나오는 자리</div>
+
+<h2>앨비스 연산자와 함께 사용됨,  no operation</h2>
+<div th:text="${data}   ?: _    " >ㅋㅅㅋ</div>
+<div th:text="${data2}   ?: _    " >ㅋㅅㅋ</div>
+
+
+</body>
+</html>

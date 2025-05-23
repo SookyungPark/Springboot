@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/order}" method="post" th:object="${order}">
+    <div th:if="${errors?.containsKey('name')}" th:text=" ${errors['name']}">!!!!</div>
+    상품이름 : <input type="text" th:field="*{name}"><br>
+
+    <div th:if="${errors?.containsKey('name')}" th:text=""></div>
+    상품금액 : <input type="text" th:field="*{price}"><br>
+    상품수량 : <input type="text" th:fidle="*{qty}"><br>
+    <button>주문하기</button>
+</form>
+</body>
+</html>
